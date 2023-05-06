@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Polluted Cities</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        text-align: center;
+      }
+      table th {
+        background-color: #f2f2f2;
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-weight: bold;
+      }
+      table td {
+        padding: 8px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>City</th>
+          <th>Y2022</th>
+          <th>JAN</th>
+          <th>FEB</th>
+          <th>MAR</th>
+          <th>APR</th>
+          <th>MAY</th>
+          <th>JUN</th>
+          <th>JUL</th>
+          <th>AUG</th>
+          <th>SEP</th>
+          <th>OCT</th>
+          <th>NOV</th>
+          <th>DEC</th>
+          <th>Y2021</th>
+          <th>Y2020</th>
+          <th>Y2019</th>
+          <th>Y2018</th>
+          <th>Y2017</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+				// Create connection
+				$conn = new mysqli("localhost", "cities_user", "cities", "polluted_citites");
+
+				// Check connection
+				if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
+        // Fetch data from city_data table $sql = "SELECT * FROM city_data";
+        $result = $conn->query($sql); // Display data in a table if
+        ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { echo "
+        <tr>
+          "; echo "
+          <td>" . $row["Rank"]. "</td>
+          "; echo "
+          <td>" . $row["City"]. "</td>
+          "; echo "
+          <td>" . $row["Y2022"]. "</td>
+          "; echo "
+          <td>" . $row["JAN"]. "</td>
+          "; echo "
+          <td>" . $row["FEB"]. "</td>
+          "; echo "
+          <td>" . $row["MAR"]. "</td>
+          "; echo "
+          <td>" . $row["APR"]. "</td>
+          "; echo "
+          <td>" . $row["MAY"]. "</td>
+          "; echo "
+          <td>" . $row["JUN"]. "</td>
+          "; echo "
+          <td>" . $row["JUL"]. "</td>
+          "; echo "
+          <td>" . $row["AUG"]. "</td>
+          "; echo "
+          <td>" . $row["SEP"]. "</td>
+          "; echo "
+          <td>" . $row["OCT"]. "</td>
+          "; echo "
+          <td>" . $row["NOV"]. "</td>
+          "; echo "
+          <td>" . $row["DEC"]. "</td>
+          "; echo "
+          <td>"</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
